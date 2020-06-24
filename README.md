@@ -1,5 +1,5 @@
 # ARXivarNext - Stress Test
-[![ARXivar NEXT](https://raw.githubusercontent.com/zanardini/ARXivarNext-WebApi/master/ARXivar-Logo.png)](https://www.arxivar.it)
+[![ARXivar NEXT](https://raw.githubusercontent.com/zanardini/ARXivarNext-StressTest/master/ARXivar-Logo.png)](https://www.arxivar.it)
 
 # What is ARXivar?
 ARXivar is a document platform to store and search the document of your company.
