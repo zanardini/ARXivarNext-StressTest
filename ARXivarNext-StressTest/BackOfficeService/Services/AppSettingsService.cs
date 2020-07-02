@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System;
 
 namespace BackOfficeService.Services
 {
@@ -71,6 +72,15 @@ namespace BackOfficeService.Services
             get
             {
                 return _configuration.GetValue<string>("AppSettings:SwaggerUIPage");
+            }
+        }
+        
+        public Uri ElasticSearchApiUrl
+        {
+            get
+            {
+                var value = _configuration.GetValue<string>("AppSettings:ElasticSearchApiUrl");
+                return new Uri(value);
             }
         }
 

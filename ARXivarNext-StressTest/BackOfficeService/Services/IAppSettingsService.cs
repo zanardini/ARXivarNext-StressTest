@@ -22,5 +22,7 @@ namespace BackOfficeService.Services
         public string ARXivarNextPassword { get; }
         
         public string SwaggerUIPage { get; }
+        
+        public Uri ElasticSearchApiUrl { get; }
     }
 }

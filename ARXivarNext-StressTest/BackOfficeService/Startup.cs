@@ -13,6 +13,7 @@ using BackOfficeService.Services;
 using IdentityServer4.AccessTokenValidation;
 using BackOfficeService.Utilities.BaseExtensions;
 using BackOfficeService.Utilities.HangFireFilters;
+using Nest;
 
 namespace BackOfficeService
 {
@@ -72,7 +73,7 @@ namespace BackOfficeService
             //singleton -- services.AddSingleton<IArxivarService>(new ArxivarService());
             //services.AddScoped<IArxivarService, ArxivarService>();
 
-
+            services.AddSingleton<IElasticClient>(new ElasticClient(new ConnectionSettings(_appSettingsService.ElasticSearchApiUrl)));
 
             services.AddControllers().AddJsonOptions(options =>
             {

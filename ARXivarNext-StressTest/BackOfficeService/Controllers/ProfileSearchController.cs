@@ -42,8 +42,7 @@ namespace BackOfficeService.Controllers
             try
             {
                 //schedulo con hangfire
-                //EnqueueResult model = new EnqueueResult(BackgroundJob.Enqueue((HangFireWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
-                EnqueueResult model = new EnqueueResult(BackgroundJob.Enqueue((HangFireWorkers.SearchProfileByDocnumberWorker job) => job.Work(docnumber)));
+                EnqueueResult model = new EnqueueResult(BackgroundJob.Enqueue((HangFireWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
 
                 //var arxivarRestConfiguration = new IO.Swagger.Client.Configuration()
                 //{
