@@ -14,6 +14,7 @@ using IdentityServer4.AccessTokenValidation;
 using BackOfficeService.Utilities.BaseExtensions;
 using BackOfficeService.Utilities.HangFireFilters;
 using Nest;
+using Hangfire.MemoryStorage;
 
 namespace BackOfficeService
 {
@@ -116,7 +117,7 @@ namespace BackOfficeService
             //Memory cache
             services.AddMemoryCache();
 
-            // Add Hangfire services
+            //Add Hangfire services
             services.AddHangfire(s => s.UseSqlServerStorage(Configuration.GetConnectionString("HangfireDB"),
                  new Hangfire.SqlServer.SqlServerStorageOptions
                  {
@@ -127,6 +128,8 @@ namespace BackOfficeService
                      DisableGlobalLocks = true
                  })
             );
+            //            services.AddHangfire(options => options.UseMemoryStorage());
+
             GlobalConfiguration.Configuration.UseFilter(new InfiniteExpirationTimeAttribute());
             GlobalConfiguration.Configuration.UseFilter(new LogFilterAttribute());
         }

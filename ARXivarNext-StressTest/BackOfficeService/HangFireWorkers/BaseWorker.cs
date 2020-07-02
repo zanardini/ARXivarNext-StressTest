@@ -35,6 +35,7 @@ namespace BackOfficeService.HangFireWorkers
             var indexResponse = _elasticClient.Index(chrono, i => i.Index("mioindice"));
             if (!indexResponse.IsValid)
                 throw new Exception(string.Format("Error during save in Elastic Chrono", indexResponse.ServerError));
+            chrono.StartTime = DateTime.Now; //non mi interessa la latenza della insert
             return chrono;
         }
 

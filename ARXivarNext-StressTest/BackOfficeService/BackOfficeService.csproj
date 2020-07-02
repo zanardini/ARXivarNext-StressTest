@@ -25,6 +25,7 @@
     <PackageReference Include="Elasticsearch.Net" Version="7.8.1" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.11" />
     <PackageReference Include="HangFire.Core" Version="1.7.11" />
+    <PackageReference Include="Hangfire.MemoryStorage.Core" Version="1.4.0" />
     <PackageReference Include="HangFire.SqlServer" Version="1.7.11" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="JsonSubTypes" Version="1.7.0" />
