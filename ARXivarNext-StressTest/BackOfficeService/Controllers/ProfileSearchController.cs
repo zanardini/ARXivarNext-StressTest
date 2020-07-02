@@ -36,7 +36,7 @@ namespace BackOfficeService.Controllers
         /// </summary>
         /// <param name="docnumber">System ID</param>
         /// <returns></returns>
-        [HttpGet("{docnumber}")]
+        [HttpPost("EnqueueSearchByDocnumber")]
         public ActionResult<EnqueueResult> EnqueueSearchByDocnumber(int docnumber)
         {
             try
@@ -74,6 +74,22 @@ namespace BackOfficeService.Controllers
                 //_cache.Set(id, model, new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(_appSettingsService.CacheMin)));
 
                 return model;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpPost("EnqueueSearchCollectionByDocnumber")]
+        public ActionResult<EnqueueResult[]> EnqueueSearchCollectionByDocnumber(int docnumber, int repeateCount)
+        {
+            try
+            {
+                EnqueueResult[] result = new EnqueueResult[repeateCount];
+                for (int i = 0; i < repeateCount; i++)
+                    result[i] = new EnqueueResult(BackgroundJob.Enqueue((HangFireWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
+                return result;
             }
             catch (Exception ex)
             {
