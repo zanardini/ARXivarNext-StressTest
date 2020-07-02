@@ -363,13 +363,11 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-/ARXivarNext-ConsumingWebApi/ExampleARXivarNext/obj/Debug
-/ARXivarNext-ConsumingWebApi/ExampleARXivarNext/bin/Debug
-/ARXivarNext-ConsumingWebApi/.vs/ARXivarNext-ConsumingWebApi/v16
-/ARXivarNext-ConsumingWebApi/IO.Swagger/bin/Debug
-/ARXivarNext-ConsumingWebApi/IO.Swagger/obj/Debug
-/ARXivarNext-ConsumingWebApi/IO.Swagger.Management/bin/Debug
-/ARXivarNext-ConsumingWebApi/IO.Swagger.Management/obj/Debug
-/ARXivarNext-ConsumingWebApi/packages
-/ARXivarNext-ConsumingWebApi/ExampleBackOfficeService/appsettings.Development.json
-/ARXivarNext-ConsumingWebApi/ExampleBackOfficeService/appsettings.Production.json
+/ARXivarNext-StressTest/.vs/ARXivarNext-StressTest/v16
+/ARXivarNext-StressTest/IO.Swagger/bin/Debug
+/ARXivarNext-StressTest/IO.Swagger/obj/Debug
+/ARXivarNext-StressTest/IO.Swagger.Management/bin/Debug
+/ARXivarNext-StressTest/IO.Swagger.Management/obj/Debug
+/ARXivarNext-StressTest/packages
+/ARXivarNext-StressTest/BackOfficeService/appsettings.Development.json
+/ARXivarNext-StressTest/BackOfficeService/appsettings.Production.json
