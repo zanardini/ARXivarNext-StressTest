@@ -15,6 +15,7 @@ using BackOfficeService.Utilities.BaseExtensions;
 using BackOfficeService.Utilities.HangFireFilters;
 using Nest;
 using Hangfire.MemoryStorage;
+using BackOfficeService.Arxivar;
 
 namespace BackOfficeService
 {
@@ -69,10 +70,7 @@ namespace BackOfficeService
             //Register dapper in scope  
             services.AddScoped<IDapperHelper, DapperHelper>();
 
-            //services.AddScoped<IEngineCalculator, EngineCalculator>();
-
-            //singleton -- services.AddSingleton<IArxivarService>(new ArxivarService());
-            //services.AddScoped<IArxivarService, ArxivarService>();
+            services.AddScoped<IArxivarService, ArxivarService>(sp => new ArxivarService(_appSettingsService.ARXivarNextWebApiUrl, _appSettingsService.ARXivarNextUserName, _appSettingsService.ARXivarNextPassword, _appSettingsService.ARXivarNextClientId, _appSettingsService.ARXivarNextClientSecret));
 
             services.AddSingleton<IElasticClient>(new ElasticClient(new ConnectionSettings(_appSettingsService.ElasticSearchApiUrl)));
 

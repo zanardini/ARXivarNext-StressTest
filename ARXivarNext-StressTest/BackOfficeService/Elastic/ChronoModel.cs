@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BackOfficeService.ElasticWriter
+namespace BackOfficeService.Elastic
 {
     public class ChronoModel
     {
