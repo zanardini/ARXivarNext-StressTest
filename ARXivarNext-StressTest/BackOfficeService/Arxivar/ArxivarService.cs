@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Primitives;
+﻿using BackOfficeFramework;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace BackOfficeService.Arxivar
             _password = password;
             _clientId = clientId;
             _clientSecret = clientSecret;
+        }
+
+        public void Login()
+        {
+            ReLogin();
         }
 
         private void ReLogin()

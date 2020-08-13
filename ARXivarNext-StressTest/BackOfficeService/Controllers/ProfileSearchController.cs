@@ -42,7 +42,7 @@ namespace BackOfficeService.Controllers
             try
             {
                 //schedulo con hangfire
-                EnqueueResult model = new EnqueueResult(BackgroundJob.Enqueue((HangFireWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
+                EnqueueResult model = new EnqueueResult(BackgroundJob.Enqueue((BackOfficeWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
 
                 //var arxivarRestConfiguration = new IO.Swagger.Client.Configuration()
                 //{
@@ -88,7 +88,7 @@ namespace BackOfficeService.Controllers
             {
                 EnqueueResult[] result = new EnqueueResult[repeateCount];
                 for (int i = 0; i < repeateCount; i++)
-                    result[i] = new EnqueueResult(BackgroundJob.Enqueue((HangFireWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
+                    result[i] = new EnqueueResult(BackgroundJob.Enqueue((BackOfficeWorkers.SearchProfileByDocnumberWorker job) => job.Work(null, JobCancellationToken.Null, docnumber)));
                 return result;
             }
             catch (Exception ex)

@@ -16,6 +16,7 @@ using BackOfficeService.Utilities.HangFireFilters;
 using Nest;
 using Hangfire.MemoryStorage;
 using BackOfficeService.Arxivar;
+using BackOfficeFramework;
 
 namespace BackOfficeService
 {
