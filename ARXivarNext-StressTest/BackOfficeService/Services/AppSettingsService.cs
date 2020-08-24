@@ -82,6 +82,14 @@ namespace BackOfficeService.Services
                 var value = _configuration.GetValue<string>("AppSettings:ElasticSearchApiUrl");
                 return new Uri(value);
             }
+        }   
+        
+        public bool HangFireUseMemoryStorage
+        {
+            get
+            {
+                return _configuration.GetValue<bool>("AppSettings:HangFireUseMemoryStorage");
+            }
         }
 
     }

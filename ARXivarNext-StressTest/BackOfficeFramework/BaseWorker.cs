@@ -32,7 +32,7 @@ namespace BackOfficeFramework
             _arxivarService = arxivarService;
         }
 
-        protected void WriteStartChrono(DateTime createdAt, string parameters)
+        protected void ChronoStart(DateTime createdAt, string parameters)
         {
             _chronoModelMaster = new ChronoModel()
             {
@@ -51,7 +51,7 @@ namespace BackOfficeFramework
             _lastChronoEnded = _chronoModelMaster.StartTime;
         }
 
-        protected void WriteEndChrono()
+        protected void ChronoEnd()
         {
             _chronoModelMaster.EndTime = DateTime.Now;
             _chronoModelMaster.MSecDuration = (_chronoModelMaster.EndTime - _chronoModelMaster.StartTime).TotalMilliseconds;
@@ -68,7 +68,7 @@ namespace BackOfficeFramework
             }
         }
 
-        protected Guid AddStartDetailChrono(string actionDescription)
+        protected Guid ChronoDetailAddStart(string actionDescription)
         {
             ChronoModel detail = new ChronoModel();
             detail.Id = Guid.NewGuid();
@@ -82,7 +82,7 @@ namespace BackOfficeFramework
             return detail.Id;
         }
 
-        protected void AddEndDetailChrono(Guid detailId)
+        protected void ChronoDetailAddEnd(Guid detailId)
         {
             var detail = _chronoModelDetails.FirstOrDefault(x => x != null && x.Id == detailId);
             if (detail != null)
@@ -90,10 +90,10 @@ namespace BackOfficeFramework
             _lastChronoEnded = detail.EndTime;
         }
 
-        protected void AddDetailChrono(string actionDescription)
+        protected void ChronoDetailAdd(string actionDescription)
         {
-            var id = AddStartDetailChrono(actionDescription);
-            AddEndDetailChrono(id);
+            var id = ChronoDetailAddStart(actionDescription);
+            ChronoDetailAddEnd(id);
         }
     }
 }

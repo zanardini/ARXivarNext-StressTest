@@ -17,18 +17,31 @@ namespace BackOfficeWorkers
         public void Work(Hangfire.Server.PerformContext performContext, IJobCancellationToken jobCancellationToken, int docnumber)
         {
             //Hangfire.BackgroundJobClient backgroundJobClient = new BackgroundJobClient(performContext.Storage);
-            WriteStartChrono(performContext.BackgroundJob.CreatedAt, docnumber.ToString());
-            AddStartDetailChrono("start");
-            var id = AddStartDetailChrono("login action");
+            
+            
+            //Avvio il cronometro
+            ChronoStart(performContext.BackgroundJob.CreatedAt, docnumber.ToString());
+            
+            //Aggiungo un dettaglio al cronometro
+            ChronoDetailAdd("start");
+
+            //Aggiungo un dettaglio al cronometro prendendomi l'ID del dettaglio
+            var id = ChronoDetailAddStart("login action");
             ArxivarService.Login();
-            AddEndDetailChrono(id);
+            //Aggiungo l'End al dettaglio del cronometro dato l'ID 
+            ChronoDetailAddEnd(id);
 
             IO.Swagger.Api.UsersApi usersApi = new IO.Swagger.Api.UsersApi(ArxivarService.Configuration);
             usersApi.UsersGet(2);
-            AddDetailChrono("after get users");
-            AddDetailChrono("End");
-            WriteEndChrono();
-        }
 
+            //Aggiungo un dettaglio al cronometro
+            ChronoDetailAdd("after get users");
+            
+            //Aggiungo un dettaglio al cronometro
+            ChronoDetailAdd("End");
+
+            //Aggiungo l'End al cronometro iniziale
+            ChronoEnd();
+        }
     }
 }

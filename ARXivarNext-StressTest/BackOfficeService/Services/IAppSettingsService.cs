@@ -24,5 +24,7 @@ namespace BackOfficeService.Services
         public string SwaggerUIPage { get; }
         
         public Uri ElasticSearchApiUrl { get; }
+        
+        public bool HangFireUseMemoryStorage { get; }
     }
 }

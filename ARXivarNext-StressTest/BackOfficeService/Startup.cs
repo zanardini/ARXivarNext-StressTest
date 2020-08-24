@@ -117,17 +117,18 @@ namespace BackOfficeService
             services.AddMemoryCache();
 
             //Add Hangfire services
-            services.AddHangfire(s => s.UseSqlServerStorage(Configuration.GetConnectionString("HangfireDB"),
-                 new Hangfire.SqlServer.SqlServerStorageOptions
-                 {
-                     CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                     SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                     QueuePollInterval = TimeSpan.Zero,
-                     UseRecommendedIsolationLevel = true,
-                     DisableGlobalLocks = true
-                 })
-            );
-            //            services.AddHangfire(options => options.UseMemoryStorage());
+            if (_appSettingsService.HangFireUseMemoryStorage)
+                services.AddHangfire(options => options.UseMemoryStorage());
+            else
+                services.AddHangfire(s => s.UseSqlServerStorage(Configuration.GetConnectionString("HangfireDB"),
+                    new Hangfire.SqlServer.SqlServerStorageOptions
+                    {
+                        CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                        SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                        QueuePollInterval = TimeSpan.Zero,
+                        UseRecommendedIsolationLevel = true,
+                        DisableGlobalLocks = true
+                    }));
 
             GlobalConfiguration.Configuration.UseFilter(new InfiniteExpirationTimeAttribute());
             GlobalConfiguration.Configuration.UseFilter(new LogFilterAttribute());
