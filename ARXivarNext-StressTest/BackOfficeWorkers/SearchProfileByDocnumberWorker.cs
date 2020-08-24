@@ -27,10 +27,14 @@ namespace BackOfficeWorkers
 
             //Aggiungo un dettaglio al cronometro prendendomi l'ID del dettaglio
             var id = ChronoDetailAddStart("login action");
+
+            //Eseguo la call di login
             ArxivarService.Login();
+            
             //Aggiungo l'End al dettaglio del cronometro dato l'ID 
             ChronoDetailAddEnd(id);
 
+            //Eseguo la call di get user
             IO.Swagger.Api.UsersApi usersApi = new IO.Swagger.Api.UsersApi(ArxivarService.Configuration);
             usersApi.UsersGet(2);
 

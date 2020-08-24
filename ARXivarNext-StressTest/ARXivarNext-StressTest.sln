@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger.Management", "IO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOfficeService", "BackOfficeService\BackOfficeService.csproj", "{341E3551-776C-4CDF-94F8-E03115F50507}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeFramework", "BackOfficeFramework\BackOfficeFramework.csproj", "{C7B4AE31-ADB0-46C7-89CA-73E9BC0D7AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOfficeFramework", "BackOfficeFramework\BackOfficeFramework.csproj", "{C7B4AE31-ADB0-46C7-89CA-73E9BC0D7AD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeWorkers", "BackOfficeWorkers\BackOfficeWorkers.csproj", "{323E2458-F245-40E3-8C6A-C8F905513A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOfficeWorkers", "BackOfficeWorkers\BackOfficeWorkers.csproj", "{323E2458-F245-40E3-8C6A-C8F905513A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
