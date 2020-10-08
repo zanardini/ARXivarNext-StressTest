@@ -7,7 +7,7 @@ namespace BackOfficeFramework
 {
     public abstract class BaseWorker
     {
-        private const string IndexName = "BackOfficeService";
+        private const string IndexName = "backofficeservice";
 
         private readonly IElasticClient _elasticClient;
         private readonly IArxivarService _arxivarService;
@@ -63,8 +63,9 @@ namespace BackOfficeFramework
             {
                 chronoModelDetail.ParentId = _chronoModelMaster.Id;
                 chronoModelDetail.ScheduledTime = _chronoModelMaster.ScheduledTime;
-                var indexResponseDetail = _elasticClient.Index(_chronoModelDetails, i => i.Index(IndexName));
-                throw new Exception(string.Format("Error during save detail in Elastic Chrono", indexResponseDetail.ServerError));
+                var indexResponseDetail = _elasticClient.IndexMany(_chronoModelDetails, IndexName);
+                if (!indexResponseDetail.IsValid)
+                    throw new Exception(string.Format("Error during save detail in Elastic Chrono", indexResponseDetail.ServerError));
             }
         }
 

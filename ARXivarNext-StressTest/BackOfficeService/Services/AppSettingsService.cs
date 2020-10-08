@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.Extensions.Configuration;
 using System;
 
 namespace BackOfficeService.Services
@@ -82,8 +83,8 @@ namespace BackOfficeService.Services
                 var value = _configuration.GetValue<string>("AppSettings:ElasticSearchApiUrl");
                 return new Uri(value);
             }
-        }   
-        
+        }
+
         public bool HangFireUseMemoryStorage
         {
             get
@@ -91,6 +92,15 @@ namespace BackOfficeService.Services
                 return _configuration.GetValue<bool>("AppSettings:HangFireUseMemoryStorage");
             }
         }
-
+        public int HangFireWorkerCount
+        {
+            get
+            {
+                var result = _configuration.GetValue<int>("AppSettings:HangFireWorkerCount");
+                if (result <= 0)
+                    result = 1;
+                return result;
+            }
+        }
     }
 }

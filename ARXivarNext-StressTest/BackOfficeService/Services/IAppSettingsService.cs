@@ -26,5 +26,7 @@ namespace BackOfficeService.Services
         public Uri ElasticSearchApiUrl { get; }
         
         public bool HangFireUseMemoryStorage { get; }
+
+        public int HangFireWorkerCount { get; }
     }
 }

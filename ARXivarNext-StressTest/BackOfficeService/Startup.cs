@@ -169,7 +169,7 @@ namespace BackOfficeService
             app.UseHangfireDashboard("/hangfire");
             app.UseHangfireServer(new BackgroundJobServerOptions()
             {
-                WorkerCount = 20, //Quanti thread parallelo
+                WorkerCount = _appSettingsService.HangFireWorkerCount, //Quanti thread parallelo
                 Queues = new string[2] { "archive", "search" } //nomi delle code che sa lavorare il mio server
             });
         }
